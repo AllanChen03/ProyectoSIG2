@@ -6,9 +6,11 @@
     <title>Mapa de Puntos</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    
 </head>
 <body>
-    <div id="map" style="height: 600px;"></div>
+    <div id="map" style="height: 500px;"></div>
     <script>
         // Inicializar el mapa
         var map = L.map('map').setView([9.928, -84.085], 8); // Centrado en Costa Rica
@@ -19,43 +21,102 @@
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
+        var HeatMapMama = 'https://allanchen03.github.io/ProyectoSIG2/heatMapMamaPNG.png';
+        var coord = [[11.220, -85.95], [8.020, -82.559]]; // Coordenadas de Costa Rica
+        
+        L.imageOverlay(HeatMapMama, coord, { opacity: 0.8 }).addTo(map);
+
+
         // Cargar el archivo GeoJSON desde la URL en el repositorio
-        fetch('hospitales.geojson')
+        fetch('https://allanchen03.github.io/ProyectoSIG2/hospitales')
             .then(response => response.json())
             .then(data => {
                 // Agregar los puntos al mapa
                 L.geoJSON(data, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 5,              // Tamaño del círculo
+                            fillColor: "#FF0000",   // Color de relleno
+                            color: "#000",          // Color del borde
+                            weight: 1,              // Grosor del borde
+                            opacity: 1,
+                            fillOpacity: 0.8        // Opacidad del relleno
+                        });
+                    },
                     onEachFeature: function (feature, layer) {
-                        layer.bindPopup(`<b>${feature.properties.name}</b><br>Tipo: ${feature.properties.type}`);
+                        layer.bindPopup(`Hospital`);
                     }
                 }).addTo(map);
             })
             .catch(error => console.error('Error cargando el GeoJSON:', error));
 
-            fetch('clinicas.geojson')
+            fetch('https://allanchen03.github.io/ProyectoSIG2/clinicas')
             .then(response => response.json())
             .then(data => {
-                // Agregar los puntos al mapa
                 L.geoJSON(data, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 5,              // Tamaño del círculo
+                            fillColor: "#00FF00",   // Color de relleno
+                            color: "#000",          // Color del borde
+                            weight: 1,              // Grosor del borde
+                            opacity: 1,
+                            fillOpacity: 0.8        // Opacidad del relleno
+                        });
+                    },
                     onEachFeature: function (feature, layer) {
-                        layer.bindPopup(`<b>${feature.properties.name}</b><br>Tipo: ${feature.properties.type}`);
+                        layer.bindPopup(`Clinica`);
                     }
                 }).addTo(map);
             })
             .catch(error => console.error('Error cargando el GeoJSON:', error));
 
-            fetch('poblados.geojson')
+        
+    </script>
+    </script>
+
+
+    <div id="mapProstata" style="height: 500px;"></div>
+    <script>
+        // Inicializar el mapa
+        var mapProstata = L.map('mapProstata').setView([9.928, -84.085], 8); // Centrado en Costa Rica
+
+        // Agregar capa base de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(mapProstata);
+
+        var HeatMapProstata = 'https://allanchen03.github.io/ProyectoSIG2/heatMapProstataPNG.png';
+        var coordP = [[11.220, -85.95], [8.020, -82.559]]; // Coordenadas de Costa Rica
+        
+        L.imageOverlay(HeatMapProstata, coordP, { opacity: 0.8 }).addTo(mapProstata);
+
+        // Cargar el archivo GeoJSON desde la URL en el repositorio
+            fetch('https://allanchen03.github.io/ProyectoSIG2/poblados')
             .then(response => response.json())
             .then(data => {
                 // Agregar los puntos al mapa
                 L.geoJSON(data, {
+                    pointToLayer: function (feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 5,              // Tamaño del círculo
+                            fillColor: "",   // Color de relleno
+                            color: "#0000FF",          // Color del borde
+                            weight: 1,              // Grosor del borde
+                            opacity: 1,
+                            fillOpacity: 0.8        // Opacidad del relleno
+                        });
+                    },
                     onEachFeature: function (feature, layer) {
-                        layer.bindPopup(`<b>${feature.properties.name}</b><br>Tipo: ${feature.properties.type}`);
+                        layer.bindPopup(`Poblado`);
                     }
-                }).addTo(map);
+                }).addTo(mapProstata);
             })
             .catch(error => console.error('Error cargando el GeoJSON:', error));
+        
     </script>
     </script>
 </body>
+</html>
 </html>
