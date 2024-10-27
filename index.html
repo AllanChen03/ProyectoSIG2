@@ -12,35 +12,35 @@
 <body>
     <div id="map" style="height: 500px;"></div>
     <script>
-        // Inicializar el mapa
-        var map = L.map('map').setView([9.928, -84.085], 8); // Centrado en Costa Rica
 
-        // Agregar capa base de OpenStreetMap
+        var map = L.map('map').setView([9.928, -84.085], 8); 
+
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(map);
 
         var HeatMapMama = 'https://allanchen03.github.io/ProyectoSIG2/heatMapMamaPNG.png';
-        var coord = [[11.220, -85.95], [8.020, -82.559]]; // Coordenadas de Costa Rica
+        var coord = [[11.220, -85.95], [8.020, -82.559]]; 
         
         L.imageOverlay(HeatMapMama, coord, { opacity: 0.8 }).addTo(map);
 
 
-        // Cargar el archivo GeoJSON desde la URL en el repositorio
+
         fetch('https://allanchen03.github.io/ProyectoSIG2/hospitales')
             .then(response => response.json())
             .then(data => {
-                // Agregar los puntos al mapa
+
                 L.geoJSON(data, {
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: 5,              // Tamaño del círculo
-                            fillColor: "#FF0000",   // Color de relleno
-                            color: "#000",          // Color del borde
-                            weight: 1,              // Grosor del borde
+                            radius: 5,           
+                            fillColor: "#FF0000",  
+                            color: "#000",        
+                            weight: 1,            
                             opacity: 1,
-                            fillOpacity: 0.8        // Opacidad del relleno
+                            fillOpacity: 0.8        
                         });
                     },
                     onEachFeature: function (feature, layer) {
@@ -56,12 +56,12 @@
                 L.geoJSON(data, {
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: 5,              // Tamaño del círculo
-                            fillColor: "#00FF00",   // Color de relleno
-                            color: "#000",          // Color del borde
-                            weight: 1,              // Grosor del borde
+                            radius: 5,             
+                            fillColor: "#00FF00",  
+                            color: "#000",         
+                            weight: 1,              
                             opacity: 1,
-                            fillOpacity: 0.8        // Opacidad del relleno
+                            fillOpacity: 0.8       
                         });
                     },
                     onEachFeature: function (feature, layer) {
@@ -78,34 +78,34 @@
 
     <div id="mapProstata" style="height: 500px;"></div>
     <script>
-        // Inicializar el mapa
-        var mapProstata = L.map('mapProstata').setView([9.928, -84.085], 8); // Centrado en Costa Rica
+     
+        var mapProstata = L.map('mapProstata').setView([9.928, -84.085], 8); 
 
-        // Agregar capa base de OpenStreetMap
+ 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap'
         }).addTo(mapProstata);
 
         var HeatMapProstata = 'https://allanchen03.github.io/ProyectoSIG2/heatMapProstataPNG.png';
-        var coordP = [[11.220, -85.95], [8.020, -82.559]]; // Coordenadas de Costa Rica
+        var coordP = [[11.220, -85.95], [8.020, -82.559]]; 
         
         L.imageOverlay(HeatMapProstata, coordP, { opacity: 0.8 }).addTo(mapProstata);
 
-        // Cargar el archivo GeoJSON desde la URL en el repositorio
+
             fetch('https://allanchen03.github.io/ProyectoSIG2/poblados')
             .then(response => response.json())
             .then(data => {
-                // Agregar los puntos al mapa
+    
                 L.geoJSON(data, {
                     pointToLayer: function (feature, latlng) {
                         return L.circleMarker(latlng, {
-                            radius: 5,              // Tamaño del círculo
-                            fillColor: "",   // Color de relleno
-                            color: "#0000FF",          // Color del borde
-                            weight: 1,              // Grosor del borde
+                            radius: 5,
+                            fillColor: "",  
+                            color: "#0000FF",
+                            weight: 1,   
                             opacity: 1,
-                            fillOpacity: 0.8        // Opacidad del relleno
+                            fillOpacity: 0.8 
                         });
                     },
                     onEachFeature: function (feature, layer) {
@@ -118,5 +118,4 @@
     </script>
     </script>
 </body>
-</html>
 </html>
