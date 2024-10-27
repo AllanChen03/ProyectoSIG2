@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Puntos</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="map" style="height: 600px;"></div>
+    <script>
+        // Inicializar el mapa
+        var map = L.map('map').setView([9.928, -84.085], 8); // Centrado en Costa Rica
+
+        // Agregar capa base de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        // Cargar el archivo GeoJSON desde la URL en el repositorio
+        fetch('hospitales.geojson')
+            .then(response => response.json())
+            .then(data => {
+                // Agregar los puntos al mapa
+                L.geoJSON(data, {
+                    onEachFeature: function (feature, layer) {
+                        layer.bindPopup(`<b>${feature.properties.name}</b><br>Tipo: ${feature.properties.type}`);
+                    }
+                }).addTo(map);
+            })
+            .catch(error => console.error('Error cargando el GeoJSON:', error));
+
+            fetch('clinicas.geojson')
+            .then(response => response.json())
+            .then(data => {
+                // Agregar los puntos al mapa
+                L.geoJSON(data, {
+                    onEachFeature: function (feature, layer) {
+                        layer.bindPopup(`<b>${feature.properties.name}</b><br>Tipo: ${feature.properties.type}`);
+                    }
+                }).addTo(map);
+            })
+            .catch(error => console.error('Error cargando el GeoJSON:', error));
+
+            fetch('poblados.geojson')
+            .then(response => response.json())
+            .then(data => {
+                // Agregar los puntos al mapa
+                L.geoJSON(data, {
+                    onEachFeature: function (feature, layer) {
+                        layer.bindPopup(`<b>${feature.properties.name}</b><br>Tipo: ${feature.properties.type}`);
+                    }
+                }).addTo(map);
+            })
+            .catch(error => console.error('Error cargando el GeoJSON:', error));
+    </script>
+    </script>
+</body>
+</html>
