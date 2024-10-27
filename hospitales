@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"name": "hospitalesCASOS",
+"features": [
+{ "type": "Feature", "properties": { "cat": 1, "value": 1, "label": "" }, "geometry": { "type": "Point", "coordinates": [ -84.076197870714282, 9.963088358541077 ] } },
+{ "type": "Feature", "properties": { "cat": 2, "value": 1, "label": "" }, "geometry": { "type": "Point", "coordinates": [ -84.112150565952376, 9.954079167634561 ] } },
+{ "type": "Feature", "properties": { "cat": 3, "value": 1, "label": "" }, "geometry": { "type": "Point", "coordinates": [ -84.139115087380944, 9.945069976728044 ] } },
+{ "type": "Feature", "properties": { "cat": 4, "value": 1, "label": "" }, "geometry": { "type": "Point", "coordinates": [ -84.112150565952376, 9.945069976728044 ] } },
+{ "type": "Feature", "properties": { "cat": 5, "value": 1, "label": "" }, "geometry": { "type": "Point", "coordinates": [ -84.058221523095241, 9.945069976728044 ] } },
+{ "type": "Feature", "properties": { "cat": 6, "value": 1, "label": "" }, "geometry": { "type": "Point", "coordinates": [ -84.049233349285714, 9.945069976728044 ] } },
+{ "type": "Feature", "properties": { "cat": 7, "value": 1, "label": "" }, "geometry": { "type": "Point", "coordinates": [ -84.085186044523809, 9.93606078582153 ] } },
+{ "type": "Feature", "properties": { "cat": 8, "value": 1, "label": "" }, "geometry": { "type": "Point", "coordinates": [ -84.067209696904754, 9.93606078582153 ] } },
+{ "type": "Feature", "properties": { "cat": 9, "value": 1, "label": "" }, "geometry": { "type": "Point", "coordinates": [ -84.139115087380944, 9.927051594915014 ] } },
+{ "type": "Feature", "properties": { "cat": 10, "value": 1, "label": "" }, "geometry": { "type": "Point", "coordinates": [ -84.085186044523809, 9.927051594915014 ] } },
+{ "type": "Feature", "properties": { "cat": 11, "value": 1, "label": "" }, "geometry": { "type": "Point", "coordinates": [ -84.076197870714282, 9.927051594915014 ] } }
+]
+}
